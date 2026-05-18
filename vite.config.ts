@@ -4,7 +4,9 @@ import tailwindcss from "@tailwindcss/vite";
 import path from "path";
 const rawPort = process.env.PORT ?? "5173";
 const port = Number(rawPort);
-const basePath = process.env.BASE_PATH ?? "/";
+const basePath =
+  process.env.BASE_PATH ??
+  (process.env.NODE_ENV === "production" ? "/Mgos/" : "/");
 
 export default defineConfig({
   base: basePath,
@@ -21,7 +23,7 @@ export default defineConfig({
   },
   root: path.resolve(import.meta.dirname),
   build: {
-    outDir: path.resolve(import.meta.dirname, "dist/public"),
+    outDir: path.resolve(import.meta.dirname, "docs"),
     emptyOutDir: true,
   },
   server: {
